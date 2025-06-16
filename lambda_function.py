@@ -253,7 +253,7 @@ def lambda_handler(event, context):
             'statusCode': 400,
             'headers': cors_headers,
             'body': safe_json_dumps({
-                'error': 'Missing one of table_name, index_name, key_name, or key_values'
+                'error': 'Missing one of table_name, ind ex_name, key_name, or key_values'
             })
         }
 
