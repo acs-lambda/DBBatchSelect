@@ -268,6 +268,17 @@ def lambda_handler(event, context):
         }
 
     logger.info(f"Querying DynamoDB table {table_name} using index {index_name}")
+    # if key values is empty, return an empty list
+    if len(key_values) == 0:
+        return {
+            'statusCode': 200,
+            'headers': cors_headers,
+            'body': safe_json_dumps({
+                'items': [],
+                'count': 0
+            })
+        }
+
     try:
         items = batch_select_db_items(
             table_name=table_name,
